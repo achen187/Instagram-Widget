@@ -9,7 +9,7 @@ http://htmlpreview.github.io/?https://github.com/achen187/Instagram-Widget/blob/
 ## Basic usage
 
 ```html
-<div class="widget"></div>
+<div id="widget"></div>
 ```
 
 ```js
