@@ -38,10 +38,10 @@ function getPictures(num, tag) {
         type: 'GET',
         success: function(result){
             var jQueryData = jQuery.parseJSON(result.data);
+            console.log(jQueryData);
             setData(jQueryData.data, num);
         },
-        error: function(data, num) {
-            console.log(data);
+        error: function(xhr, status, error) {
         }
     });
 } 
