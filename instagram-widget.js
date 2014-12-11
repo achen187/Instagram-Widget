@@ -2,6 +2,9 @@
 //resize height on chagnes
 $( window ).resize(function() {
     $('.instaWrapper').css('height', $('.instaWrapper').width());
+    $('.instaTextInner').css('max-height', $('.instaWrapper').width());
+    $('.instaTextInner').css('width', $('.instaWrapper').width());
+    $('.instaTextInner').css('font-size', getInstaFontSize()+'px');
 });
 
 //main instagram method
@@ -14,7 +17,7 @@ function instagram(obj, tag, row, col) {
         toAdd = toAdd + '<div class=\"instarow\">';
 
         for (var j = 0; j < col; j++) {
-            toAdd = toAdd + '<div id=\"instaWrapper' + counter +'\"' +  'class="instaWrapper" > <div class="instaOverlay"><div id="instaText' + counter + '" class="instaTextClass"></div></div></div>';
+            toAdd = toAdd + '<div id=\"instaWrapper' + counter +'\"' +  'class="instaWrapper" > <div class="instaOverlay"><div id="instaText' + counter + '" class="instaTextClass"><div class="instaTextInner"></div></div></div></div>';
             counter = counter + 1;
         }
         toAdd = toAdd + '</div>';
@@ -24,7 +27,9 @@ function instagram(obj, tag, row, col) {
     //adjust width and height
     $('.instaWrapper').css('width', (100 / col) + '%');
     $('.instaWrapper').css('height', $('.instaWrapper').width());
-
+    $('.instaTextInner').css('max-height', $('.instaWrapper').height());
+    $('.instaTextInner').css('width', $('.instaWrapper').width());
+    $('.instaTextInner').css('font-size', getInstaFontSize()+'px');
     //make api call
     getPictures(row * col, tag);
 }
@@ -44,7 +49,12 @@ function getPictures(num, tag) {
         error: function(xhr, status, error) {
         }
     });
-} 
+}
+
+
+function getInstaFontSize() {
+    return $('.instaWrapper').width() / 12 ;
+}
 
 //update web page with pictures
 function setData(data, num) {
@@ -57,13 +67,12 @@ function setData(data, num) {
             window.location.href = $(this).attr("href");
         });
         var caption = data[i].caption.text;
-        $('#instaText'+i).text(caption);
+
+        $('#instaText'+i + ' .instaTextInner').text(caption);
     }
     //for now, upper bounded by number of pics returned from api
     for (j=i; j < num; j++) {
-        console.log($('#instaWrapper' + j));
         $('#instaWrapper'+j).css("display","none");
-        console.log($('#instaWrapper' + j));
     }                         
 
 }

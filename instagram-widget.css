@@ -37,6 +37,12 @@
     display: table-cell;
     vertical-align: middle;
     text-align:center;
-    padding:10px;
     width:100%;
 }
+
+.instaTextInner {
+    padding:5%;
+    box-sizing: border-box;
+}
+
+
