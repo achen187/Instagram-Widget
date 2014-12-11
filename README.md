@@ -14,7 +14,7 @@ http://htmlpreview.github.io/?https://github.com/achen187/Instagram-Widget/blob/
 
 ```js
 $(document).ready(function() {
-    instagram($('#widget', 'thecatharold', 2, 3);
+    instagram($('#widget'), 'thecatharold', 2, 3);
 });
 ```
 
