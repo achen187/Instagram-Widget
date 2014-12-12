@@ -1,14 +1,14 @@
-
+var container;
+var numCol;
 //resize height on chagnes
 $( window ).resize(function() {
-    $('.instaWrapper').css('height', $('.instaWrapper').width());
-    $('.instaTextInner').css('max-height', $('.instaWrapper').width());
-    $('.instaTextInner').css('width', $('.instaWrapper').width());
-    $('.instaTextInner').css('font-size', getInstaFontSize()+'px');
+    setDimensions();
 });
 
 //main instagram method
 function instagram(obj, tag, row, col) {
+    container = obj;
+    numCol = col;
     var toAdd = '';
     var counter = 0;
 
@@ -24,15 +24,25 @@ function instagram(obj, tag, row, col) {
     }
     obj.append(toAdd);
     
+    setDimensions();
+    
+    //make api call
+    getPictures(row * col, tag);
+}
+
+function setDimensions() {
     //adjust width and height
-    $('.instaWrapper').css('width', (100 / col) + '%');
+    $('.instaWrapper').css('width', (100/numCol) + '%');
+    var width = $(".instaWrapper")[0].getBoundingClientRect().width
+    $('.instaWrapper').css('width', width 
+                           - parseInt($(".instaWrapper").css("marginLeft"))
+                           - parseInt($(".instaWrapper").css("marginRight")));
     $('.instaWrapper').css('height', $('.instaWrapper').width());
     $('.instaTextInner').css('max-height', $('.instaWrapper').height());
     $('.instaTextInner').css('width', $('.instaWrapper').width());
     $('.instaTextInner').css('font-size', getInstaFontSize()+'px');
-    //make api call
-    getPictures(row * col, tag);
 }
+
 
 //api call with number of pictures and the tag to load
 function getPictures(num, tag) {

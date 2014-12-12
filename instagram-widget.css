@@ -8,7 +8,9 @@
 .instaWrapper {
     box-sizing: border-box;
     display:inline-block;
-    background-size:cover;
+    background-size:cover; 
+    margin:5px;
+    
 
 }
 
