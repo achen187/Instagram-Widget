@@ -7,8 +7,8 @@ $( window ).resize(function() {
 
 //main instagram method
 function instagram(obj, tag, row, col) {
-    console.log('instagram');
     container = obj;
+    container.empty();
     numCol = col;
     var toAdd = '';
     var counter = 0;
