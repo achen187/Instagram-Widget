@@ -20,7 +20,6 @@ function instagram(obj, tag, row, col) {
         for (var j = 0; j < col; j++) {
             toAdd = toAdd + '<div id=\"instaWrapper' + counter +'\"' +  'class="instaWrapper" > <div class="instaOverlay"><div id="instaText' + counter + '" class="instaTextClass"><div class="instaTextInner"></div></div></div></div>';
             counter = counter + 1;
-            console.log(counter);
         }
         toAdd = toAdd + '</div>';
     }
