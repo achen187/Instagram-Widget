@@ -7,6 +7,7 @@ $( window ).resize(function() {
 
 //main instagram method
 function instagram(obj, tag, row, col) {
+    console.log('instagram');
     container = obj;
     numCol = col;
     var toAdd = '';
@@ -19,6 +20,7 @@ function instagram(obj, tag, row, col) {
         for (var j = 0; j < col; j++) {
             toAdd = toAdd + '<div id=\"instaWrapper' + counter +'\"' +  'class="instaWrapper" > <div class="instaOverlay"><div id="instaText' + counter + '" class="instaTextClass"><div class="instaTextInner"></div></div></div></div>';
             counter = counter + 1;
+            console.log(counter);
         }
         toAdd = toAdd + '</div>';
     }
@@ -53,7 +55,6 @@ function getPictures(num, tag) {
         type: 'GET',
         success: function(result){
             var jQueryData = jQuery.parseJSON(result.data);
-            console.log(jQueryData);
             setData(jQueryData.data, num);
         },
         error: function(xhr, status, error) {
