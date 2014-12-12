@@ -79,7 +79,7 @@ function setData(data, num) {
         });
         var caption = data[i].caption.text;
 
-        $('#instaText'+i + ' .instaTextInner').text("hello");
+        $('#instaText'+i + ' .instaTextInner').text(caption);
     }
     //for now, upper bounded by number of pics returned from api
     for (j=i; j < num; j++) {
